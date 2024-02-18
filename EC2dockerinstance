@@ -1,0 +1,10 @@
+Key for the EC2 instance with docker and mosquito mqtt is uploaded to repository under the .ppk file ending. Mosquito isn't downloaded as of now (11am 2/18) but should be soon.
+
+Using Putty
+Instructions for connecting:
+1.Download .ppk file onto local computer
+2. ssh into instance with PUTTY and using ubuntu@18.117.90.31 for the host name
+3. Choose .ppk file under Connection, SSH, authorization, then credentials. Choose file
+
+Using powershell
+ssh -i keypath.ppk ubuntu@18.117.90.31
