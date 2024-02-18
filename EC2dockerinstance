@@ -2,7 +2,7 @@ Key for the EC2 instance with docker and mosquito mqtt is uploaded to repository
 
 Using Putty
 Instructions for connecting:
-1.Download .ppk file onto local computer
+1.Download .ppk file onto local computer (should be called brain.ppk in repo)
 2. ssh into instance with PUTTY and using ubuntu@18.117.90.31 for the host name
 3. Choose .ppk file under Connection, SSH, authorization, then credentials. Choose file
 
