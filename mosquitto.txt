@@ -1,0 +1,40 @@
+
+//note, this is done on ubuntu ec2, instructions taken from medium article, credit to Niraj Ranasinghe
+
+//Downloads curl for the downloading of docker over https
+sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
+
+
+//uses curl to download key for authenticating future docker download
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add –
+
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+
+//checks to see if installation source is indeed docker repository
+apt-cache policy docker-ce
+
+sudo apt install docker-ce -y
+
+//check status 
+sudo systemctl status docker
+
+Installing Mosquitto mqttp broker
+
+//create directories for mosquitto
+
+sudo mkdir -p /mosquitto/config
+sudo mkdir /mosquitto/data
+sudo mkdir /mosquitto/log
+
+//create conf file inside of /config directory
+vi /mosquitto/config/mosquitto.conf  or touch /mosquitto/config/mosquitto.conf
+
+//sudo nano into the conf file and then input this text
+persistence true
+persistence_location /mosquitto/data/
+log_dest file /mosquitto/log/mosquitto.log
+allow_anonymous true
+listener 1883
+
+//download mosquitto broker
+docker run -d -p 1883:1883 -p 9001:9001 -v /mosquitto:/mosquitto eclipse-mosquitto
