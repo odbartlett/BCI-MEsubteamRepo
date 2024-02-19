@@ -8,3 +8,6 @@ Instructions for connecting:
 
 Using powershell
 ssh -i keypath.ppk ubuntu@18.117.90.31
+
+Using Terminal on MacOS
+ssh -i brain.pem ubuntu@18.117.90.31
