@@ -1,1 +1,1 @@
-This is the public Repo for the machine-effector subdivision of BCI
+This is the public Repo for the I-O subdivision of BCI
