@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Telehealth Robot Stream</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #f0f0f0;
+            color: #333;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+        }
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        #videostream {
+            max-width: 100%;
+            border: 3px solid #3498db;
+            box-shadow: 0 0 20px rgba(52, 152, 219, 0.5);
+        }
+        .profile-tab {
+            position: fixed;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 250px;
+            background-color: #ffffff;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .profile-tab h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .profile-info {
+            margin-top: 20px;
+        }
+        .profile-info p {
+            margin: 10px 0;
+        }
+        #responseFrame {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+        <h1>Telehealth Robot Stream</h1>
+        <img id="videostream" src="/api/placeholder/640/480" alt="Video Stream">
+    </div>
+    <div class="profile-tab">
+        <h2>Robot Profile</h2>
+        <div class="profile-info">
+            <p><strong>Name:</strong> BCIS telehealth robot</p>
+            <p><strong>Status:</strong> connected (need to get this to work) </p>
+            
+        </div>
+    </div>
+    <iframe id="responseFrame" name="responseFrame"></iframe>
+    <script>
+        const videoStream = document.getElementById('videostream');
+        const ws = new WebSocket('wss://matthewschricker.me/ws?type=client');
+        ws.onmessage = function(event) {
+            videoStream.src = 'data:image/jpeg;base64,' + event.data;
+        };
+    </script>
+</body>
+</html>
