@@ -1,4 +1,4 @@
-//this is originally for my chicken coop but shouldn't be hard simply to simply have server send video streams to the other clients connected
+#this is originally for my chicken coop but shouldn't be hard simply to simply have server send video streams to the other clients connected
 import asyncio
 import websockets
 from urllib.parse import urlparse, parse_qs
