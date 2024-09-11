@@ -1,3 +1,5 @@
+NOTE: server is currently down(to save money) so these instructions will not work
+
 Key for the EC2 instance with docker and mosquito mqtt is uploaded to repository under the .ppk file ending. Mosquito isn't downloaded as of now (11am 2/18) but should be soon.
 
 Using Putty
