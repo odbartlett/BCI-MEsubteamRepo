@@ -1,1 +1,1 @@
-Test
+websocket directory is intended to hold files for BCI telehealth robot website. Will be run on flask web server (probably hosted on AWS) and inside a docker container. In order to compile, will need to download docker from their website. 
