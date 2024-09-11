@@ -1,1 +1,3 @@
 websocket directory is intended to hold files for BCI telehealth robot website. Will be run on flask web server (probably hosted on AWS) and inside a docker container. In order to compile, will need to download docker from their website. 
+server.py is intended to be ran separately in a different docker container. It waits for websocket connections and then redirects it to other clients. Initially made for another purpose, so needs to be edited. Relies on clients and streams
+sending their type in connection websocket connection arguments.
