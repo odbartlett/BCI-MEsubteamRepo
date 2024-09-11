@@ -1,9 +1,13 @@
 #this is originally for my chicken coop but shouldn't be hard simply to simply have server send video streams to the other clients connected
+#I'd like it so that the client sends in their connection request both type=client and also robot=robotID
+#robot in its connection request will send with its predefined robotID
+#Needs to be greatly altered to allow this. This code most likely won't work on Hopkins or Home network, I'll set up an aws playground server soon
+
 import asyncio
 import websockets
 from urllib.parse import urlparse, parse_qs
 
-
+#stream, client sets
 door = set()
 door2 = set()
 streams = set()
@@ -30,9 +34,8 @@ async def handler(websocket, path):
 
         try:
             async for message in websocket:
-                if message == 'light':
-                    for client in streams:
-                        await client.send('light')
+                #Need to change this so that a client which requests a robot stream
+                #might be able to just get rid of this as a whole, client shouldn't be sending messages over website after starting
                 if message == 'door2':
                     if websocket in door:
                         door.remove(websocket)
@@ -68,7 +71,8 @@ async def handler(websocket, path):
                         await client.send(message)
 
 async def main():
-  server = await websockets.serve(handler, "localhost", 8765)
+    #8765 is classic websocket port
+    server = await websockets.serve(handler, "localhost", 8765)
     await server.wait_closed()
 
 if __name__ == "__main__":
