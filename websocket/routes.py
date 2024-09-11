@@ -27,12 +27,8 @@ def logout():
 @app.route('/dashboard', methods=['GET', 'POST'])
 @login_required
 def dashboard():
-    if request.method == 'POST':
-        text = request.form.get('text')
-        mongo.db.submissions.insert_one({'user_id': current_user.get_id(), 'text': text})
-        flash('Submission successful')
-    submissions = mongo.db.submissions.find({'user_id': current_user.get_id()})
-    return render_template('dashboard.html', submissions=submissions)
+    robotList = mongo.db.robots.find({'user_id': current_user.get_id()}) #Need to edit this to only return robots registered to your username
+    return render_template('dashboard.html', submissions=robotList)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
